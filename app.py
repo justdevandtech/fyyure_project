@@ -62,7 +62,7 @@ def index():
 #  Venues
 #  ----------------------------------------------------------------
 
-def generate_venue_upcoming_data(data):      
+def create_venue_upcoming_data(data):      
   count =0    
   present_time = str(datetime.today())    
   show_data = Show.query.filter_by(venue_id=data.id).all()  
@@ -102,7 +102,7 @@ def venues():
     else:
       record.append(recordData)  
       
-    value = generate_venue_upcoming_data(data1)    
+    value = create_venue_upcoming_data(data1)    
     for f in firstCity: 
       city = {
         'id':f.id,
@@ -132,7 +132,7 @@ def search_venues():
     name = venue.name.lower()    
     if term in name:    
       found = True  
-      value = generate_venue_upcoming_data(venue)      
+      value = create_venue_upcoming_data(venue)      
       result ={
         "id": venue.id,
         "name": venue.name,
